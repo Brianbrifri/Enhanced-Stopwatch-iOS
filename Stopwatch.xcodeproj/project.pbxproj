@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8440DAD91DD7C9760045C5F5 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440DAD81DD7C9760045C5F5 /* PageControl.swift */; };
+		8440DADB1DD7C9910045C5F5 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440DADA1DD7C9910045C5F5 /* PageViewController.swift */; };
 		CB8227551BB2FF53004F9225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8227541BB2FF53004F9225 /* AppDelegate.swift */; };
 		CB8227571BB2FF53004F9225 /* StopwatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8227561BB2FF53004F9225 /* StopwatchViewController.swift */; };
 		CB82275A1BB2FF53004F9225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8227581BB2FF53004F9225 /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8440DAD81DD7C9760045C5F5 /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
+		8440DADA1DD7C9910045C5F5 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		CB8227511BB2FF53004F9225 /* Stopwatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stopwatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8227541BB2FF53004F9225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB8227561BB2FF53004F9225 /* StopwatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +69,8 @@
 			isa = PBXGroup;
 			children = (
 				CB8227561BB2FF53004F9225 /* StopwatchViewController.swift */,
+				8440DAD81DD7C9760045C5F5 /* PageControl.swift */,
+				8440DADA1DD7C9910045C5F5 /* PageViewController.swift */,
 				CB82276C1BB3387C004F9225 /* LapCellTableViewCell.swift */,
 				CB82276A1BB30EF8004F9225 /* StopwatchModel.swift */,
 				CBAE65AE1DBDBBBA0057C4C0 /* RunState.swift */,
@@ -160,9 +166,11 @@
 			files = (
 				CB8227571BB2FF53004F9225 /* StopwatchViewController.swift in Sources */,
 				CB82276D1BB3387C004F9225 /* LapCellTableViewCell.swift in Sources */,
+				8440DAD91DD7C9760045C5F5 /* PageControl.swift in Sources */,
 				CB8227691BB30234004F9225 /* UIColorExtension.swift in Sources */,
 				CB82276B1BB30EF8004F9225 /* StopwatchModel.swift in Sources */,
 				CB8227551BB2FF53004F9225 /* AppDelegate.swift in Sources */,
+				8440DADB1DD7C9910045C5F5 /* PageViewController.swift in Sources */,
 				CBAE65AF1DBDBBBA0057C4C0 /* RunState.swift in Sources */,
 				CB8227671BB30179004F9225 /* ControlButtonView.swift in Sources */,
 			);
