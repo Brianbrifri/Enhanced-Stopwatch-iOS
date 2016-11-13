@@ -65,6 +65,24 @@ extension StopwatchViewController: UITableViewDataSource {
 		let formatted = formatTimeIntervalToString(lap)
 		cell.lapNumberLabel.text = "Lap \(reverseIndex + 1)"
 		cell.lapTimeLabel.text = "\(formatted.minutes):\(formatted.seconds).\(formatted.milliseconds)"
+        print(reverseIndex)
+        if model.laps.count > 1 {
+            print("Reverse index: \(reverseIndex) fastestIndex: \(model.fastestIndex) slowestIndex: \(model.slowestIndex)")
+            if reverseIndex == model.fastestIndex {
+                cell.lapTimeLabel.textColor = UIColor.green
+                cell.lapNumberLabel.textColor = UIColor.green
+            }
+            else if reverseIndex == model.slowestIndex {
+                cell.lapTimeLabel.textColor = UIColor.red
+                cell.lapNumberLabel.textColor = UIColor.red
+            }
+            else {
+                cell.lapTimeLabel.textColor = UIColor.white
+                cell.lapNumberLabel.textColor = UIColor.white
+            }
+        }
+
+        
 		
 		return cell
 	}

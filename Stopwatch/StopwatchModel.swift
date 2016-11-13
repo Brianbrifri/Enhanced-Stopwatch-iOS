@@ -20,6 +20,9 @@ class StopwatchModel {
 	fileprivate var lapStartTime: Date?
 	fileprivate var masterTimeInterval: TimeInterval = 0
 	fileprivate var lapTimeInterval: TimeInterval = 0
+    
+    var fastestIndex = 0
+    var slowestIndex = 0
 	
 	init(delegate: StopwatchModelDelegate) {
 		self.delegate = delegate
@@ -31,6 +34,7 @@ class StopwatchModel {
         default:
             runState = .stopped
         }
+        fastSlowLaps()
 	}
     
     func viewControllerDoneInit() {
@@ -90,6 +94,8 @@ class StopwatchModel {
     fileprivate func deleteLaps() {
         let lapsPersistence = LapsPersistence()
         lapsPersistence.deleteLaps()
+        fastestIndex = 0
+        slowestIndex = 0
     }
 	
 	fileprivate func addLap() {
@@ -101,7 +107,7 @@ class StopwatchModel {
 		lapTimeInterval = 0
         saveLap(lapTime: value)
         updataLapArray()
-		//laps.append(value)
+        checkNewLap(value)
 		delegate?.lapWasAdded()
 		delegate?.lapUpdated(with: lapTimeInterval)
 	}
@@ -123,6 +129,37 @@ class StopwatchModel {
 		lapTimeInterval = 0
         deleteLaps()
         updataLapArray()
-		//laps = []
 	}
+    
+    fileprivate func checkNewLap(_ lap: TimeInterval) {
+        switch laps.count {
+        case 0...2:
+            if lap > laps[slowestIndex] {
+                slowestIndex = laps.count - 1
+            } else {
+                fastestIndex = laps.count - 1
+            }
+        default:
+            if lap > laps[slowestIndex] {
+                slowestIndex = laps.count - 1
+            }
+            else if lap < laps[fastestIndex] {
+                fastestIndex = laps.count - 1
+            }
+            else {
+                print("No change")
+            }
+        }
+    }
+    
+    fileprivate func fastSlowLaps() {
+        for i in 0..<laps.count {
+            if laps[i] > laps[slowestIndex] {
+                slowestIndex = i
+            }
+            if laps[i] < laps[fastestIndex] {
+                fastestIndex = i
+            }
+        }
+    }
 }
