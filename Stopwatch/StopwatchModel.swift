@@ -12,8 +12,8 @@ protocol StopwatchModelDelegate: class {
 class StopwatchModel {
 	
 	weak var delegate: StopwatchModelDelegate?
-	fileprivate(set) var laps: [TimeInterval] = []
-	fileprivate var timer: Timer?
+    fileprivate(set) var laps: [TimeInterval] = []
+    fileprivate var timer: Timer?
 	fileprivate var runState: RunState
 	
 	fileprivate var startTime: Date?
@@ -23,8 +23,19 @@ class StopwatchModel {
 	
 	init(delegate: StopwatchModelDelegate) {
 		self.delegate = delegate
-		runState = .reset
+        let persistence = LapsPersistence()
+        laps = persistence.fetchLapData()
+        switch laps.count {
+        case 0:
+            runState = .reset
+        default:
+            runState = .stopped
+        }
 	}
+    
+    func viewControllerDoneInit() {
+        delegate?.updateLapResetButton(forState: runState)
+    }
 	
 	func lapResetPressed() {
 		switch (runState) {
@@ -65,6 +76,21 @@ class StopwatchModel {
 		delegate?.updateStartStopButton(forState: runState)
 		delegate?.updateLapResetButton(forState: runState)
 	}
+    
+    fileprivate func saveLap(lapTime: TimeInterval) {
+        let lapsPersistence = LapsPersistence()
+        lapsPersistence.insertLapData(from: lapTime)
+    }
+    
+    fileprivate func updataLapArray() {
+        let lapsPersistence = LapsPersistence()
+        laps = lapsPersistence.fetchLapData()
+    }
+    
+    fileprivate func deleteLaps() {
+        let lapsPersistence = LapsPersistence()
+        lapsPersistence.deleteLaps()
+    }
 	
 	fileprivate func addLap() {
 		guard let lapTime = lapStartTime else {
@@ -73,7 +99,9 @@ class StopwatchModel {
 		let value = Date().timeIntervalSince(lapTime) + lapTimeInterval
 		lapStartTime = Date()
 		lapTimeInterval = 0
-		laps.append(value)
+        saveLap(lapTime: value)
+        updataLapArray()
+		//laps.append(value)
 		delegate?.lapWasAdded()
 		delegate?.lapUpdated(with: lapTimeInterval)
 	}
@@ -93,6 +121,8 @@ class StopwatchModel {
 		timer?.invalidate()
 		masterTimeInterval = 0
 		lapTimeInterval = 0
-		laps = []
+        deleteLaps()
+        updataLapArray()
+		//laps = []
 	}
 }

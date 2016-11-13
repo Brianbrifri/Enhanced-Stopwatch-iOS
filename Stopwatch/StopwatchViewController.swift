@@ -30,6 +30,7 @@ class StopwatchViewController: UIViewController {
 		lapResetButton.isEnabled = false
 		lapResetButton.titleLabel.text = "Lap"
 		startStopButton.titleLabel.text = "Start"
+        model?.viewControllerDoneInit()
 		lapsTableView.reloadData()
 	}
 
@@ -93,6 +94,7 @@ extension StopwatchViewController: StopwatchModelDelegate {
 	func updateLapResetButton(forState runningState: RunState) {
 		switch (runningState) {
 		case .stopped:
+            lapResetButton.isEnabled = true
 			lapResetButton.titleLabel.text = "Reset"
 		case .started, .reset:
 			lapResetButton.titleLabel.text = "Lap"
