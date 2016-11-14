@@ -11,12 +11,17 @@ class StopwatchViewController: UIViewController {
 	@IBOutlet weak var lapResetButton: ControlButtonView!
 	@IBOutlet weak var startStopButton: ControlButtonView!
 	@IBOutlet weak var lapsTableView: UITableView!
+    @IBOutlet weak var timerView: UIView!
 	
 	fileprivate(set) var model: StopwatchModel!
+    fileprivate var pageViewController: PageViewController!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		model = StopwatchModel(delegate: self)
+        pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "TimerController") as! PageViewController
+        self.timerView.addSubview(pageViewController.view)
+        pageViewController.view.frame = timerView.frame
 		setupDefaults()
 	}
 	

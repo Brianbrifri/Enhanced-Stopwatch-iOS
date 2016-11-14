@@ -8,28 +8,58 @@
 
 import UIKit
 
-class PageViewController: UIPageViewController {
+class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
+    var timerPageControllers = [UIViewController]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.delegate = self
+        self.dataSource = self
+        let analogPage = storyboard?.instantiateViewController(withIdentifier: "Analog")
+        let digitalPage = storyboard?.instantiateViewController(withIdentifier: "Digital")
+        timerPageControllers.append(digitalPage!)
+        timerPageControllers.append(analogPage!)
+        setViewControllers([digitalPage!], direction: .forward, animated: false, completion: nil)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+   
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        let selectedIndex = timerPageControllers.index(of: viewController)
+        let previousIndex = abs(selectedIndex! - 1) % timerPageControllers.count
+        return timerPageControllers[previousIndex]
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        let selectedIndex = timerPageControllers.index(of: viewController)
+        let nextIndex = abs(selectedIndex! + 1) % timerPageControllers.count        
+        return timerPageControllers[nextIndex]
     }
-    */
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        let prevIndex = timerPageControllers.index(of: previousViewControllers.first!)
+        
+        var index : Int = -1
+        
+        // Inelegant, I know. Tried many different implementations, but this was the best I could think of without wasting too much time.
+        // Basically, the thinking was: if you are coming from the second controller then you are now on the first, and vice versa.
+        if prevIndex == 0 {
+            index = 1
+        } else if prevIndex == 1 {
+            index = 0
+        }
+        _ = ["index" : index]
+        //NSNotificationCenter.defaultCenter().postNotificationName(Key.pageChange.rawValue, object: nil, userInfo: indexDict)
+        
+    }
+    
+    private func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return timerPageControllers.count
+    }
+    
+    private func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return 0
+    }
 
 }
