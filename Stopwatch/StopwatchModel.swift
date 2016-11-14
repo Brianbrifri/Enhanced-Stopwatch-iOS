@@ -132,23 +132,11 @@ class StopwatchModel {
 	}
     
     fileprivate func checkNewLap(_ lap: TimeInterval) {
-        switch laps.count {
-        case 0...2:
-            if lap > laps[slowestIndex] {
-                slowestIndex = laps.count - 1
-            } else {
-                fastestIndex = laps.count - 1
-            }
-        default:
-            if lap > laps[slowestIndex] {
-                slowestIndex = laps.count - 1
-            }
-            else if lap < laps[fastestIndex] {
-                fastestIndex = laps.count - 1
-            }
-            else {
-                print("No change")
-            }
+        if lap > laps[slowestIndex] {
+            slowestIndex = laps.count - 1
+        }
+        if lap < laps[fastestIndex] {
+            fastestIndex = laps.count - 1
         }
     }
     
