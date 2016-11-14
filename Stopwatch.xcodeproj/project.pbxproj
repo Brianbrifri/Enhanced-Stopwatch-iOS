@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8440DAD91DD7C9760045C5F5 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440DAD81DD7C9760045C5F5 /* PageControl.swift */; };
 		8440DADB1DD7C9910045C5F5 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440DADA1DD7C9910045C5F5 /* PageViewController.swift */; };
 		84AA32F71DD9593E00B932A3 /* DigitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA32F61DD9593E00B932A3 /* DigitalViewController.swift */; };
 		84AA32F91DD9594500B932A3 /* AnalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA32F81DD9594500B932A3 /* AnalogViewController.swift */; };
@@ -27,7 +26,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8440DAD81DD7C9760045C5F5 /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		8440DADA1DD7C9910045C5F5 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		84AA32F61DD9593E00B932A3 /* DigitalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DigitalViewController.swift; path = ../DigitalViewController.swift; sourceTree = "<group>"; };
 		84AA32F81DD9594500B932A3 /* AnalogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalogViewController.swift; path = ../AnalogViewController.swift; sourceTree = "<group>"; };
@@ -99,7 +97,6 @@
 		CB8227531BB2FF53004F9225 /* Stopwatch */ = {
 			isa = PBXGroup;
 			children = (
-				8440DAD81DD7C9760045C5F5 /* PageControl.swift */,
 				CB82276C1BB3387C004F9225 /* LapCellTableViewCell.swift */,
 				CB82276A1BB30EF8004F9225 /* StopwatchModel.swift */,
 				CBAE65AE1DBDBBBA0057C4C0 /* RunState.swift */,
@@ -197,7 +194,6 @@
 			files = (
 				CB8227571BB2FF53004F9225 /* StopwatchViewController.swift in Sources */,
 				CB82276D1BB3387C004F9225 /* LapCellTableViewCell.swift in Sources */,
-				8440DAD91DD7C9760045C5F5 /* PageControl.swift in Sources */,
 				CB8227691BB30234004F9225 /* UIColorExtension.swift in Sources */,
 				84C631771DD8E8E2007E74E1 /* LapsData.xcdatamodeld in Sources */,
 				84C631791DD8E9BB007E74E1 /* LapsPersistence.swift in Sources */,

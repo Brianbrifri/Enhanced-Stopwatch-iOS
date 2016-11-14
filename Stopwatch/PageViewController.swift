@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol StopwatchPageDelegate: class {
+    func updatePageControlIndex(with index: Int)
+}
+
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
     var timerPageControllers = [UIViewController]()
+    weak var pageDelegate: StopwatchPageDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,17 +46,10 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        let prevIndex = timerPageControllers.index(of: previousViewControllers.first!)
         
-        var index : Int = -1
+        let index = timerPageControllers.index(of: previousViewControllers.first!) == 0 ? 1 : 0
         
-        if prevIndex == 0 {
-            index = 1
-        } else if prevIndex == 1 {
-            index = 0
-        }
-        _ = ["index" : index]
-        //NSNotificationCenter.defaultCenter().postNotificationName(Key.pageChange.rawValue, object: nil, userInfo: indexDict)
+        pageDelegate.updatePageControlIndex(with: index)
         
     }
     

@@ -16,7 +16,7 @@
                 <pageViewController storyboardIdentifier="TimerController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="bjk-g3-e0M" customClass="PageViewController" customModule="Stopwatch" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ek5-EB-US6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1165" y="372"/>
+            <point key="canvasLocation" x="1695" y="428"/>
         </scene>
         <!--Stopwatch View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -34,42 +34,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="444.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="iYR-Sy-klE" userLabel="Lap Time View">
-                                <rect key="frame" x="219" y="42" width="128" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nat-Zo-lS3" userLabel="Lap Minutes">
-                                        <rect key="frame" x="0.0" y="0.0" width="37" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text=":" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SjR-J7-l6X" userLabel="Lap :">
-                                        <rect key="frame" x="37" y="0.0" width="8" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OD0-fa-vqD" userLabel="Lap Seconds">
-                                        <rect key="frame" x="45" y="0.0" width="37" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="." textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dI-2k-M7J" userLabel="Lap .">
-                                        <rect key="frame" x="83" y="0.0" width="8" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9U-Cn-Smn" userLabel="Lap Milliseconds">
-                                        <rect key="frame" x="91" y="0.0" width="37" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dmo-0d-M6Y" customClass="ControlButtonView" customModule="Stopwatch" customModuleProvider="target">
                                 <rect key="frame" x="16" y="364.5" width="70" height="70"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -151,6 +115,10 @@
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="Yua-4b-jma"/>
                                 </connections>
                             </tableView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="VF9-fU-cWb">
+                                <rect key="frame" x="168" y="315" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -174,11 +142,6 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gnm-qh-7WU" secondAttribute="bottom" id="sXb-JP-zhY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gnm-qh-7WU" secondAttribute="trailing" constant="-20" id="yNw-Jt-RDl"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="iYR-Sy-klE"/>
-                            </mask>
-                        </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
                                 <exclude reference="5Db-C4-z1Q"/>
@@ -187,11 +150,9 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="lapMillisecondsLabel" destination="l9U-Cn-Smn" id="lYR-LT-IV3"/>
-                        <outlet property="lapMinutesLabel" destination="Nat-Zo-lS3" id="9av-z6-C3E"/>
                         <outlet property="lapResetButton" destination="Dmo-0d-M6Y" id="j1S-B2-6Bv"/>
-                        <outlet property="lapSecondsLabel" destination="OD0-fa-vqD" id="ydt-3i-2Kb"/>
                         <outlet property="lapsTableView" destination="gnm-qh-7WU" id="Nic-Mu-x9I"/>
+                        <outlet property="pageControl" destination="VF9-fU-cWb" id="0NZ-FV-jNu"/>
                         <outlet property="startStopButton" destination="VLE-23-3Ak" id="vCL-Hg-ZSo"/>
                         <outlet property="timerView" destination="FyE-vI-wWm" id="Le4-1d-lrQ"/>
                     </connections>
