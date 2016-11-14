@@ -62,10 +62,10 @@
 		84AA32FA1DD9595F00B932A3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				84AA32F61DD9593E00B932A3 /* DigitalViewController.swift */,
-				84AA32F81DD9594500B932A3 /* AnalogViewController.swift */,
 				CB8227561BB2FF53004F9225 /* StopwatchViewController.swift */,
 				8440DADA1DD7C9910045C5F5 /* PageViewController.swift */,
+				84AA32F61DD9593E00B932A3 /* DigitalViewController.swift */,
+				84AA32F81DD9594500B932A3 /* AnalogViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";

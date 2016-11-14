@@ -10,26 +10,54 @@ import UIKit
 
 class DigitalViewController: UIViewController {
 
+    @IBOutlet weak var minutesLabel: UILabel!
+    @IBOutlet weak var secondsLabel: UILabel!
+    @IBOutlet weak var millisecondsLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    func setupDefaults() {
+        minutesLabel.text = "00"
+        secondsLabel.text = "00"
+        millisecondsLabel.text = "00"
+    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    fileprivate func formatTimeIntervalToString(_ time: TimeInterval) -> (minutes: String, seconds: String, milliseconds: String) {
+        let minutes = (Int(time) / 60) % 60
+        let seconds = Int(time) % 60
+        let milliSeconds = Int(time * 100) % 100
+        return (String(format: "%02d", minutes), String(format: "%02d", seconds), String(format: "%02d", milliSeconds))
+    }
+}
+
+extension DigitalViewController: StopwatchModelDelegate {
+    func lapWasAdded() {
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func timerUpdated(with timestamp: TimeInterval) {
+        let value = formatTimeIntervalToString(timestamp)
+        minutesLabel.text = value.minutes
+        secondsLabel.text = value.seconds
+        millisecondsLabel.text = value.milliseconds
     }
-    */
+    
+    func lapUpdated(with timestamp: TimeInterval) {
 
+    }
+    
+    func updateLapResetButton(forState runningState: RunState) {
+
+    }
+    
+    func updateStartStopButton(forState runningState: RunState) {
+
+    }
+    
+    func resetDefaults() {
+        setupDefaults()
+    }
 }

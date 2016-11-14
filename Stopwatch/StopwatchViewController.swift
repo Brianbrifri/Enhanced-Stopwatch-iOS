@@ -2,12 +2,6 @@ import UIKit
 
 class StopwatchViewController: UIViewController {
 
-	@IBOutlet weak var lapMinutesLabel: UILabel!
-	@IBOutlet weak var lapSecondsLabel: UILabel!
-	@IBOutlet weak var lapMillisecondsLabel: UILabel!
-	@IBOutlet weak var minutesLabel: UILabel!
-	@IBOutlet weak var secondsLabel: UILabel!
-	@IBOutlet weak var millisecondsLabel: UILabel!
 	@IBOutlet weak var lapResetButton: ControlButtonView!
 	@IBOutlet weak var startStopButton: ControlButtonView!
 	@IBOutlet weak var lapsTableView: UITableView!
@@ -24,14 +18,10 @@ class StopwatchViewController: UIViewController {
         pageViewController.view.frame = timerView.frame
 		setupDefaults()
 	}
+    
+    
 	
 	func setupDefaults() {
-		minutesLabel.text = "00"
-		secondsLabel.text = "00"
-		millisecondsLabel.text = "00"
-		lapMinutesLabel.text = "00"
-		lapSecondsLabel.text = "00"
-		lapMillisecondsLabel.text = "00"
 		lapResetButton.isEnabled = false
 		lapResetButton.titleLabel.text = "Lap"
 		startStopButton.titleLabel.text = "Start"
@@ -99,17 +89,11 @@ extension StopwatchViewController: StopwatchModelDelegate {
 	}
 	
 	func timerUpdated(with timestamp: TimeInterval) {
-		let value = formatTimeIntervalToString(timestamp)
-		minutesLabel.text = value.minutes
-		secondsLabel.text = value.seconds
-		millisecondsLabel.text = value.milliseconds
+
 	}
 	
 	func lapUpdated(with timestamp: TimeInterval) {
-		let value = formatTimeIntervalToString(timestamp)
-		lapMinutesLabel.text = value.minutes
-		lapSecondsLabel.text = value.seconds
-		lapMillisecondsLabel.text = value.milliseconds
+
 	}
 	
 	func updateLapResetButton(forState runningState: RunState) {

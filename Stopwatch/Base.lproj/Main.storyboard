@@ -32,52 +32,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FyE-vI-wWm" userLabel="StopwatchTime View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="444.5"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="93J-CC-sJ5">
-                                        <rect key="frame" x="35.5" y="180.5" width="304.5" height="84"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9m-3Z-I9N" userLabel="Minutes">
-                                                <rect key="frame" x="0.0" y="0.0" width="85.5" height="84"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0B4-Oy-5LN" userLabel=":">
-                                                <rect key="frame" x="88.5" y="0.0" width="18" height="84"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4BQ-Gc-mea" userLabel="Seconds">
-                                                <rect key="frame" x="109.5" y="0.0" width="85.5" height="84"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="." textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULM-9L-KgI" userLabel=".">
-                                                <rect key="frame" x="198" y="0.0" width="18" height="84"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyH-V1-PyD" userLabel="miliseconds">
-                                                <rect key="frame" x="219" y="0.0" width="85.5" height="84"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="4BQ-Gc-mea" firstAttribute="width" secondItem="C9m-3Z-I9N" secondAttribute="width" id="Kfc-Wo-YRR"/>
-                                            <constraint firstItem="jyH-V1-PyD" firstAttribute="width" secondItem="C9m-3Z-I9N" secondAttribute="width" id="b9U-lQ-4Wr"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="93J-CC-sJ5" firstAttribute="centerX" secondItem="FyE-vI-wWm" secondAttribute="centerX" id="8Oh-b0-Sda"/>
-                                    <constraint firstItem="93J-CC-sJ5" firstAttribute="centerY" secondItem="FyE-vI-wWm" secondAttribute="centerY" id="EHg-dw-7GD"/>
-                                </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="iYR-Sy-klE" userLabel="Lap Time View">
                                 <rect key="frame" x="219" y="42" width="128" height="36"/>
@@ -237,9 +192,6 @@
                         <outlet property="lapResetButton" destination="Dmo-0d-M6Y" id="j1S-B2-6Bv"/>
                         <outlet property="lapSecondsLabel" destination="OD0-fa-vqD" id="ydt-3i-2Kb"/>
                         <outlet property="lapsTableView" destination="gnm-qh-7WU" id="Nic-Mu-x9I"/>
-                        <outlet property="millisecondsLabel" destination="jyH-V1-PyD" id="wii-7G-4mH"/>
-                        <outlet property="minutesLabel" destination="C9m-3Z-I9N" id="hFP-1g-8GH"/>
-                        <outlet property="secondsLabel" destination="4BQ-Gc-mea" id="hdh-cb-kdb"/>
                         <outlet property="startStopButton" destination="VLE-23-3Ak" id="vCL-Hg-ZSo"/>
                         <outlet property="timerView" destination="FyE-vI-wWm" id="Le4-1d-lrQ"/>
                     </connections>
@@ -248,10 +200,10 @@
             </objects>
             <point key="canvasLocation" x="-254" y="428"/>
         </scene>
-        <!--View Controller-->
+        <!--Digital View Controller-->
         <scene sceneID="rJr-dF-XrH">
             <objects>
-                <viewController storyboardIdentifier="Digital" id="ZPx-cx-qqT" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Digital" id="ZPx-cx-qqT" customClass="DigitalViewController" customModule="Stopwatch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mBJ-4M-2Ub"/>
                         <viewControllerLayoutGuide type="bottom" id="fZk-zT-eAI"/>
@@ -321,15 +273,20 @@
                             <constraint firstItem="DOD-Mc-ofw" firstAttribute="top" secondItem="ugf-hR-nZE" secondAttribute="top" id="jxW-e3-8pV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="millisecondsLabel" destination="1i9-U8-IgF" id="KMd-A0-R2p"/>
+                        <outlet property="minutesLabel" destination="WW0-wy-0f8" id="zbA-pQ-c7B"/>
+                        <outlet property="secondsLabel" destination="Zg3-qQ-1U6" id="Qmr-fz-uBF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRG-Os-vZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="380" y="427.73613193403304"/>
         </scene>
-        <!--View Controller-->
+        <!--Analog View Controller-->
         <scene sceneID="n3m-fD-sSQ">
             <objects>
-                <viewController storyboardIdentifier="Analog" id="dud-7g-vt6" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Analog" id="dud-7g-vt6" customClass="AnalogViewController" customModule="Stopwatch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="smu-U9-Q7b"/>
                         <viewControllerLayoutGuide type="bottom" id="3Mg-lS-OFE"/>

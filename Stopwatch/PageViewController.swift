@@ -24,6 +24,9 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         setViewControllers([digitalPage!], direction: .forward, animated: false, completion: nil)
     }
 
+    func update() {
+        
+    }
    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         let selectedIndex = timerPageControllers.index(of: viewController)
@@ -42,8 +45,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         var index : Int = -1
         
-        // Inelegant, I know. Tried many different implementations, but this was the best I could think of without wasting too much time.
-        // Basically, the thinking was: if you are coming from the second controller then you are now on the first, and vice versa.
         if prevIndex == 0 {
             index = 1
         } else if prevIndex == 1 {
