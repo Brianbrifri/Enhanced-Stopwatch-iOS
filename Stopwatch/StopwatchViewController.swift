@@ -14,16 +14,16 @@ class StopwatchViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		model = StopwatchModel(delegate: self)
+		model = StopwatchModel()
+        model.delegate.addDelegate(delegte: self)
         pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "TimerController") as! PageViewController
         pageViewController.pageDelegate = self
+        pageViewController.model = model
         self.timerView.addSubview(pageViewController.view)
         pageViewController.view.frame = timerView.frame
         pageControl.numberOfPages = pageViewController.timerPageControllers.count
 		setupDefaults()
 	}
-    
-    
 	
 	func setupDefaults() {
 		lapResetButton.isEnabled = false
@@ -91,15 +91,7 @@ extension StopwatchViewController: StopwatchModelDelegate {
 	func lapWasAdded() {
 		lapsTableView.reloadData()
 	}
-	
-	func timerUpdated(with timestamp: TimeInterval) {
 
-	}
-	
-	func lapUpdated(with timestamp: TimeInterval) {
-
-	}
-	
 	func updateLapResetButton(forState runningState: RunState) {
 		switch (runningState) {
 		case .stopped:

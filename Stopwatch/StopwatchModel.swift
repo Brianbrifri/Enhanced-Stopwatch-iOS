@@ -9,9 +9,18 @@ protocol StopwatchModelDelegate: class {
 	func resetDefaults()
 }
 
+extension StopwatchModelDelegate {
+    func lapWasAdded() {}
+    func timerUpdated(with timestamp: TimeInterval) {}
+    func lapUpdated(with timestamp: TimeInterval) {}
+    func updateLapResetButton(forState runningState: RunState) {}
+    func updateStartStopButton(forState runningState: RunState) {}
+    func resetDefaults() {}
+}
+
 class StopwatchModel {
 	
-	weak var delegate: StopwatchModelDelegate?
+	var delegate = MulticastDelegate<StopwatchModelDelegate>()
     fileprivate(set) var laps: [TimeInterval] = []
     fileprivate var timer: Timer?
 	fileprivate var runState: RunState
@@ -24,8 +33,7 @@ class StopwatchModel {
     var fastestIndex = 0
     var slowestIndex = 0
 	
-	init(delegate: StopwatchModelDelegate) {
-		self.delegate = delegate
+	init() {
         let persistence = LapsPersistence()
         laps = persistence.fetchLapData()
         switch laps.count {
@@ -38,7 +46,7 @@ class StopwatchModel {
 	}
     
     func viewControllerDoneInit() {
-        delegate?.updateLapResetButton(forState: runState)
+        delegate |> { delegate in delegate.updateLapResetButton(forState: runState)}
     }
 	
 	func lapResetPressed() {
@@ -48,13 +56,13 @@ class StopwatchModel {
 		case .stopped:
 			runState = .reset
 			invalidateTimer()
-			delegate?.resetDefaults()
+            delegate |> { delegate in delegate.resetDefaults() }
 			return
 		case .reset:
 			break
 		}
 		
-		delegate?.updateLapResetButton(forState: runState)
+        delegate |> { delegate in delegate.updateLapResetButton(forState: runState)}
 	}
 	
 	func startStopPressed() {
@@ -77,8 +85,8 @@ class StopwatchModel {
 			RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
 			runState = .started
 		}
-		delegate?.updateStartStopButton(forState: runState)
-		delegate?.updateLapResetButton(forState: runState)
+        delegate |> { delegate in delegate.updateStartStopButton(forState: runState) }
+        delegate |> { delegate in delegate.updateLapResetButton(forState: runState) }
 	}
     
     fileprivate func saveLap(lapTime: TimeInterval) {
@@ -108,8 +116,8 @@ class StopwatchModel {
         saveLap(lapTime: value)
         updataLapArray()
         checkNewLap(value)
-		delegate?.lapWasAdded()
-		delegate?.lapUpdated(with: lapTimeInterval)
+        delegate |> { delegate in delegate.lapWasAdded() }
+        delegate |> { delegate in delegate.lapUpdated(with: lapTimeInterval) }
 	}
 	
 	@objc func updateTimeInterval(_ timer: AnyObject) {
@@ -119,8 +127,8 @@ class StopwatchModel {
 		}
 		let lapValue = Date().timeIntervalSince(lapTime) + lapTimeInterval
 		let stopWatchValue = Date().timeIntervalSince(watchTime) + masterTimeInterval
-		delegate?.lapUpdated(with: lapValue)
-		delegate?.timerUpdated(with: stopWatchValue)
+        delegate |> { delegate in delegate.lapUpdated(with: lapValue) }
+        delegate |> { delegate in delegate.timerUpdated(with: stopWatchValue) }
 	}
 	
 	fileprivate func invalidateTimer() {

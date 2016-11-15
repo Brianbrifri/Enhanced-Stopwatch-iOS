@@ -35,26 +35,12 @@ class DigitalViewController: UIViewController {
 }
 
 extension DigitalViewController: StopwatchModelDelegate {
-    func lapWasAdded() {
-    }
     
     func timerUpdated(with timestamp: TimeInterval) {
         let value = formatTimeIntervalToString(timestamp)
         minutesLabel.text = value.minutes
         secondsLabel.text = value.seconds
         millisecondsLabel.text = value.milliseconds
-    }
-    
-    func lapUpdated(with timestamp: TimeInterval) {
-
-    }
-    
-    func updateLapResetButton(forState runningState: RunState) {
-
-    }
-    
-    func updateStartStopButton(forState runningState: RunState) {
-
     }
     
     func resetDefaults() {

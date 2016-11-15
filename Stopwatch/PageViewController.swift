@@ -16,10 +16,10 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
 
     var timerPageControllers = [UIViewController]()
     weak var pageDelegate: StopwatchPageDelegate!
+    var model: StopwatchModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.delegate = self
         self.dataSource = self
         let analogPage = storyboard?.instantiateViewController(withIdentifier: "Analog")
@@ -27,38 +27,30 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         timerPageControllers.append(digitalPage!)
         timerPageControllers.append(analogPage!)
         setViewControllers([digitalPage!], direction: .forward, animated: false, completion: nil)
+        for controller in timerPageControllers {
+            model?.delegate.addDelegate(delegte: controller as! StopwatchModelDelegate)
+        }
     }
 
-    func update() {
-        
-    }
-   
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         let selectedIndex = timerPageControllers.index(of: viewController)
-        let previousIndex = abs(selectedIndex! - 1) % timerPageControllers.count
-        return timerPageControllers[previousIndex]
+        if selectedIndex == timerPageControllers.count - 1 {
+            return timerPageControllers[selectedIndex! - 1]
+        } else {
+            return nil
+        }
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let selectedIndex = timerPageControllers.index(of: viewController)
-        let nextIndex = abs(selectedIndex! + 1) % timerPageControllers.count        
-        return timerPageControllers[nextIndex]
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        
-        let index = timerPageControllers.index(of: previousViewControllers.first!) == 0 ? 1 : 0
-        
-        pageDelegate.updatePageControlIndex(with: index)
-        
-    }
-    
-    private func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return timerPageControllers.count
-    }
-    
-    private func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return 0
+        if selectedIndex == 0 {
+            return timerPageControllers[selectedIndex! + 1]
+        } else {
+            return nil
+        }
     }
 
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        pageDelegate.updatePageControlIndex(with: timerPageControllers.index(of: pendingViewControllers.first!)!)
+    }
 }

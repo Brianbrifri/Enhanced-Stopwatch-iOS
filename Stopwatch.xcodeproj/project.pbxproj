@@ -13,6 +13,7 @@
 		84C631741DD8E8A2007E74E1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C631731DD8E8A2007E74E1 /* CoreDataManager.swift */; };
 		84C631771DD8E8E2007E74E1 /* LapsData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84C631751DD8E8E2007E74E1 /* LapsData.xcdatamodeld */; };
 		84C631791DD8E9BB007E74E1 /* LapsPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C631781DD8E9BB007E74E1 /* LapsPersistence.swift */; };
+		84F646FC1DDAD71A00029B10 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F646FB1DDAD71A00029B10 /* MulticastDelegate.swift */; };
 		CB8227551BB2FF53004F9225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8227541BB2FF53004F9225 /* AppDelegate.swift */; };
 		CB8227571BB2FF53004F9225 /* StopwatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8227561BB2FF53004F9225 /* StopwatchViewController.swift */; };
 		CB82275A1BB2FF53004F9225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8227581BB2FF53004F9225 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		84C631731DD8E8A2007E74E1 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		84C631761DD8E8E2007E74E1 /* LapsData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LapsData.xcdatamodel; sourceTree = "<group>"; };
 		84C631781DD8E9BB007E74E1 /* LapsPersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LapsPersistence.swift; sourceTree = "<group>"; };
+		84F646FB1DDAD71A00029B10 /* MulticastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		CB8227511BB2FF53004F9225 /* Stopwatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stopwatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8227541BB2FF53004F9225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB8227561BB2FF53004F9225 /* StopwatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				CB82276C1BB3387C004F9225 /* LapCellTableViewCell.swift */,
 				CB82276A1BB30EF8004F9225 /* StopwatchModel.swift */,
+				84F646FB1DDAD71A00029B10 /* MulticastDelegate.swift */,
 				CBAE65AE1DBDBBBA0057C4C0 /* RunState.swift */,
 				CB8227661BB30179004F9225 /* ControlButtonView.swift */,
 				CB8227681BB30234004F9225 /* UIColorExtension.swift */,
@@ -201,6 +204,7 @@
 				CB8227551BB2FF53004F9225 /* AppDelegate.swift in Sources */,
 				84AA32F91DD9594500B932A3 /* AnalogViewController.swift in Sources */,
 				8440DADB1DD7C9910045C5F5 /* PageViewController.swift in Sources */,
+				84F646FC1DDAD71A00029B10 /* MulticastDelegate.swift in Sources */,
 				CBAE65AF1DBDBBBA0057C4C0 /* RunState.swift in Sources */,
 				84C631741DD8E8A2007E74E1 /* CoreDataManager.swift in Sources */,
 				84AA32F71DD9593E00B932A3 /* DigitalViewController.swift in Sources */,
