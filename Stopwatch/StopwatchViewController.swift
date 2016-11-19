@@ -7,7 +7,6 @@ class StopwatchViewController: UIViewController {
 	@IBOutlet weak var startStopButton: ControlButtonView!
 	@IBOutlet weak var lapsTableView: UITableView!
     @IBOutlet weak var timerView: UIView!
-    @IBOutlet weak var pageControl: UIPageControl!
     
 	fileprivate(set) var model: StopwatchModel!
     fileprivate var pageViewController: PageViewController!
@@ -17,11 +16,14 @@ class StopwatchViewController: UIViewController {
 		model = StopwatchModel()
         model.delegate.addDelegate(delegte: self)
         pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "TimerController") as! PageViewController
-        pageViewController.pageDelegate = self
-        pageViewController.model = model
+        let analogPage = storyboard?.instantiateViewController(withIdentifier: "Analog")
+        let digitalPage = storyboard?.instantiateViewController(withIdentifier: "Digital")
+        model.delegate.addDelegate(delegte: analogPage as! StopwatchModelDelegate)
+        model.delegate.addDelegate(delegte: digitalPage as! StopwatchModelDelegate)
+        pageViewController.addChildViewControllers(digitalPage!)
+        pageViewController.addChildViewControllers(analogPage!)
         self.timerView.addSubview(pageViewController.view)
         pageViewController.view.frame = timerView.frame
-        pageControl.numberOfPages = pageViewController.timerPageControllers.count
 		setupDefaults()
 	}
 	
@@ -117,12 +119,4 @@ extension StopwatchViewController: StopwatchModelDelegate {
 		setupDefaults()
 	}
 }
-
-extension StopwatchViewController: StopwatchPageDelegate {
-    
-    func updatePageControlIndex(with index: Int) {
-        pageControl.currentPage = index
-    }
-}
-
 

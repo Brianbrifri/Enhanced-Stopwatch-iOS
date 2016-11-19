@@ -10,8 +10,14 @@ import UIKit
 
 class AnalogViewController: UIViewController {
 
+    let analogView = AnalogView()
+    
+    @IBOutlet weak var clockView: ClockView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        clockView.addSubview(analogView)
+        
 
     }
 

@@ -14,6 +14,9 @@
 		84C631771DD8E8E2007E74E1 /* LapsData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84C631751DD8E8E2007E74E1 /* LapsData.xcdatamodeld */; };
 		84C631791DD8E9BB007E74E1 /* LapsPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C631781DD8E9BB007E74E1 /* LapsPersistence.swift */; };
 		84F646FC1DDAD71A00029B10 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F646FB1DDAD71A00029B10 /* MulticastDelegate.swift */; };
+		84F647001DDD55F000029B10 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F646FF1DDD55F000029B10 /* ClockView.swift */; };
+		84F647021DDD563A00029B10 /* AnalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F647011DDD563A00029B10 /* AnalogView.swift */; };
+		84F647051DDD577F00029B10 /* AnalogLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F647041DDD577F00029B10 /* AnalogLayer.swift */; };
 		CB8227551BB2FF53004F9225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8227541BB2FF53004F9225 /* AppDelegate.swift */; };
 		CB8227571BB2FF53004F9225 /* StopwatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8227561BB2FF53004F9225 /* StopwatchViewController.swift */; };
 		CB82275A1BB2FF53004F9225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8227581BB2FF53004F9225 /* Main.storyboard */; };
@@ -34,6 +37,9 @@
 		84C631761DD8E8E2007E74E1 /* LapsData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LapsData.xcdatamodel; sourceTree = "<group>"; };
 		84C631781DD8E9BB007E74E1 /* LapsPersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LapsPersistence.swift; sourceTree = "<group>"; };
 		84F646FB1DDAD71A00029B10 /* MulticastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
+		84F646FF1DDD55F000029B10 /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
+		84F647011DDD563A00029B10 /* AnalogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogView.swift; sourceTree = "<group>"; };
+		84F647041DDD577F00029B10 /* AnalogLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogLayer.swift; sourceTree = "<group>"; };
 		CB8227511BB2FF53004F9225 /* Stopwatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stopwatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8227541BB2FF53004F9225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB8227561BB2FF53004F9225 /* StopwatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewController.swift; sourceTree = "<group>"; };
@@ -62,10 +68,10 @@
 		84AA32FA1DD9595F00B932A3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CB8227561BB2FF53004F9225 /* StopwatchViewController.swift */,
-				8440DADA1DD7C9910045C5F5 /* PageViewController.swift */,
-				84AA32F61DD9593E00B932A3 /* DigitalViewController.swift */,
 				84AA32F81DD9594500B932A3 /* AnalogViewController.swift */,
+				84AA32F61DD9593E00B932A3 /* DigitalViewController.swift */,
+				8440DADA1DD7C9910045C5F5 /* PageViewController.swift */,
+				CB8227561BB2FF53004F9225 /* StopwatchViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -78,6 +84,18 @@
 				84C631751DD8E8E2007E74E1 /* LapsData.xcdatamodeld */,
 			);
 			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		84F647031DDD565B00029B10 /* Views/Layers */ = {
+			isa = PBXGroup;
+			children = (
+				84F647041DDD577F00029B10 /* AnalogLayer.swift */,
+				84F647011DDD563A00029B10 /* AnalogView.swift */,
+				84F646FF1DDD55F000029B10 /* ClockView.swift */,
+				CB82276C1BB3387C004F9225 /* LapCellTableViewCell.swift */,
+				CB8227661BB30179004F9225 /* ControlButtonView.swift */,
+			);
+			name = Views/Layers;
 			sourceTree = "<group>";
 		};
 		CB8227481BB2FF53004F9225 = {
@@ -99,13 +117,12 @@
 		CB8227531BB2FF53004F9225 /* Stopwatch */ = {
 			isa = PBXGroup;
 			children = (
-				CB82276C1BB3387C004F9225 /* LapCellTableViewCell.swift */,
 				CB82276A1BB30EF8004F9225 /* StopwatchModel.swift */,
 				84F646FB1DDAD71A00029B10 /* MulticastDelegate.swift */,
 				CBAE65AE1DBDBBBA0057C4C0 /* RunState.swift */,
-				CB8227661BB30179004F9225 /* ControlButtonView.swift */,
 				CB8227681BB30234004F9225 /* UIColorExtension.swift */,
 				CB8227581BB2FF53004F9225 /* Main.storyboard */,
+				84F647031DDD565B00029B10 /* Views/Layers */,
 				84AA32FA1DD9595F00B932A3 /* View Controllers */,
 				84C6317A1DD8EB5E007E74E1 /* Core Data */,
 				CB82276E1BB33DB9004F9225 /* Supporting Files */,
@@ -195,13 +212,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F647001DDD55F000029B10 /* ClockView.swift in Sources */,
 				CB8227571BB2FF53004F9225 /* StopwatchViewController.swift in Sources */,
+				84F647051DDD577F00029B10 /* AnalogLayer.swift in Sources */,
 				CB82276D1BB3387C004F9225 /* LapCellTableViewCell.swift in Sources */,
 				CB8227691BB30234004F9225 /* UIColorExtension.swift in Sources */,
 				84C631771DD8E8E2007E74E1 /* LapsData.xcdatamodeld in Sources */,
 				84C631791DD8E9BB007E74E1 /* LapsPersistence.swift in Sources */,
 				CB82276B1BB30EF8004F9225 /* StopwatchModel.swift in Sources */,
 				CB8227551BB2FF53004F9225 /* AppDelegate.swift in Sources */,
+				84F647021DDD563A00029B10 /* AnalogView.swift in Sources */,
 				84AA32F91DD9594500B932A3 /* AnalogViewController.swift in Sources */,
 				8440DADB1DD7C9910045C5F5 /* PageViewController.swift in Sources */,
 				84F646FC1DDAD71A00029B10 /* MulticastDelegate.swift in Sources */,

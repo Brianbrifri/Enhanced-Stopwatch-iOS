@@ -46,7 +46,7 @@ class StopwatchModel {
 	}
     
     func viewControllerDoneInit() {
-        delegate |> { delegate in delegate.updateLapResetButton(forState: runState)}
+        delegate |> { delegate in delegate.updateLapResetButton(forState: runState) }
     }
 	
 	func lapResetPressed() {
@@ -62,7 +62,7 @@ class StopwatchModel {
 			break
 		}
 		
-        delegate |> { delegate in delegate.updateLapResetButton(forState: runState)}
+        delegate |> { delegate in delegate.updateLapResetButton(forState: runState) }
 	}
 	
 	func startStopPressed() {

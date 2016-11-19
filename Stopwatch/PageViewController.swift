@@ -8,28 +8,20 @@
 
 import UIKit
 
-protocol StopwatchPageDelegate: class {
-    func updatePageControlIndex(with index: Int)
-}
-
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
     var timerPageControllers = [UIViewController]()
-    weak var pageDelegate: StopwatchPageDelegate!
     var model: StopwatchModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
         self.dataSource = self
-        let analogPage = storyboard?.instantiateViewController(withIdentifier: "Analog")
-        let digitalPage = storyboard?.instantiateViewController(withIdentifier: "Digital")
-        timerPageControllers.append(digitalPage!)
-        timerPageControllers.append(analogPage!)
-        setViewControllers([digitalPage!], direction: .forward, animated: false, completion: nil)
-        for controller in timerPageControllers {
-            model?.delegate.addDelegate(delegte: controller as! StopwatchModelDelegate)
-        }
+        setViewControllers([timerPageControllers.first!], direction: .forward, animated: false, completion: nil)
+    }
+    
+    func addChildViewControllers(_ childController: UIViewController) {
+        timerPageControllers.append(childController)
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -50,7 +42,11 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         }
     }
 
-    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        pageDelegate.updatePageControlIndex(with: timerPageControllers.index(of: pendingViewControllers.first!)!)
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return timerPageControllers.count
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        return 0
     }
 }
