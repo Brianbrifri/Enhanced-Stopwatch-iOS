@@ -11,10 +11,10 @@ import UIKit
 class AnalogLayer: CALayer {
     
     private var ticksLayer = CALayer()
-    
+    var mainTimerLayer = CALayer()
+    var lapTimerLayer = CALayer()
     
     override func draw(in ctx: CGContext) {
-
         let newBounds = bounds.insetBy(dx: 20, dy: 30)
         
         UIGraphicsPushContext(ctx)
@@ -35,10 +35,66 @@ class AnalogLayer: CALayer {
             textLayer.alignmentMode = kCAAlignmentCenter
             textLayer.backgroundColor = UIColor.clear.cgColor
             textLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(Double(index) * M_PI / 6)))
-            
             ticksLayer.addSublayer(textLayer)
         }
+        
+        
+        lapTimerLayer.bounds = newBounds
+        lapTimerLayer.position = CGPoint(x: newBounds.midX, y: newBounds.midY)
+        lapTimerLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        lapTimerLayer.contents = lapHand()?.cgImage
+        addSublayer(lapTimerLayer)
+        
+        mainTimerLayer.bounds = newBounds
+        mainTimerLayer.position = CGPoint(x: newBounds.midX, y: newBounds.midY)
+        mainTimerLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        mainTimerLayer.contents = timeHand()?.cgImage
+        addSublayer(mainTimerLayer)
         UIGraphicsPopContext()
 
+    }
+    
+    func timeHand() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: frame.width, height: frame.height), false, 1.0)
+
+        if let ctx = UIGraphicsGetCurrentContext() {
+            ctx.move(to: CGPoint(x: bounds.width / 2, y: 0))
+            ctx.addLine(to: CGPoint(x: bounds.width / 2, y: (bounds.height / 2) + 30))
+            ctx.setLineWidth(2)
+            ctx.setStrokeColor(UIColor.orange.cgColor)
+            ctx.strokePath()
+            
+            let timerImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return timerImage
+        }
+        return nil
+    }
+    
+    func lapHand() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: frame.width, height: frame.height), false, 1.0)
+        
+        if let ctx = UIGraphicsGetCurrentContext() {
+            ctx.move(to: CGPoint(x: bounds.width / 2, y: 0))
+            ctx.addLine(to: CGPoint(x: bounds.width / 2, y: (bounds.height / 2) + 30))
+            ctx.setLineWidth(2)
+            ctx.setStrokeColor(UIColor.blue.cgColor)
+            ctx.strokePath()
+            
+            let timerImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return timerImage
+        }
+        return nil
+    }
+    
+    func rotateMainTimer(with transform: CGAffineTransform) {
+        CATransaction.setAnimationDuration(0.2)
+        mainTimerLayer.setAffineTransform(transform)
+    }
+    
+    func rotateLapTimer(with transform: CGAffineTransform) {
+        CATransaction.setAnimationDuration(0.2)
+        lapTimerLayer.setAffineTransform(transform)
     }
 }

@@ -10,6 +10,9 @@ import UIKit
 
 class AnalogViewController: UIViewController {
 
+    @IBOutlet weak var milliseconds: UILabel!
+    @IBOutlet weak var seconds: UILabel!
+    @IBOutlet weak var minutes: UILabel!
     let analogView = AnalogView()
     
     @IBOutlet weak var clockView: ClockView!
@@ -25,5 +28,19 @@ class AnalogViewController: UIViewController {
 }
 
 extension AnalogViewController: StopwatchModelDelegate {
+    func timerUpdated(with timestamp: TimeInterval) {
+        analogView.rotateMainHand(with: timestamp)
+//        let value = formatTimeIntervalToString(timestamp)
+//        minutes.text = value.minutes
+//        seconds.text = value.seconds
+//        milliseconds.text = value.milliseconds
+    }
     
+    func lapUpdated(with timestamp: TimeInterval) {
+        analogView.rotateLapHand(with: timestamp)
+    }
+    
+    func resetDefaults() {
+        analogView.resetDefaults()
+    }
 }

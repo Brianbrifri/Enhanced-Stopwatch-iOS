@@ -251,14 +251,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIN-bW-g9m" userLabel="StopwatchTime View" customClass="ClockView" customModule="Stopwatch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dIN-bW-g9m" userLabel="StopwatchTime View" customClass="ClockView" customModule="Stopwatch" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="23" width="375" height="647"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=":" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjN-ce-EEL" userLabel=":">
+                                        <rect key="frame" x="157" y="415" width="8" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="00" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFV-vS-y78" userLabel="Seconds">
+                                        <rect key="frame" x="166" y="415" width="46" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" fixedFrame="YES" text="." textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGE-ku-qg0" userLabel=".">
+                                        <rect key="frame" x="212" y="415" width="9" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcF-Ik-Wn0" userLabel="miliseconds">
+                                        <rect key="frame" x="220" y="415" width="43.5" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="00" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxk-pz-yhr" userLabel="Minutes">
+                                        <rect key="frame" x="114" y="415" width="43.5" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="wFV-vS-y78" secondAttribute="bottom" constant="190" id="505-qx-TjG"/>
+                                    <constraint firstItem="Fxk-pz-yhr" firstAttribute="leading" secondItem="dIN-bW-g9m" secondAttribute="leading" constant="112" id="A6n-S5-GF5"/>
+                                    <constraint firstAttribute="trailing" secondItem="dcF-Ik-Wn0" secondAttribute="trailing" constant="112" id="ERL-JS-VP7"/>
+                                    <constraint firstAttribute="bottom" secondItem="Fxk-pz-yhr" secondAttribute="bottom" constant="190" id="FDJ-aa-dOh"/>
+                                    <constraint firstItem="dcF-Ik-Wn0" firstAttribute="width" secondItem="Fxk-pz-yhr" secondAttribute="width" id="GQm-FO-ii6"/>
+                                    <constraint firstItem="wFV-vS-y78" firstAttribute="width" secondItem="Fxk-pz-yhr" secondAttribute="width" id="HX9-FE-1iT"/>
+                                    <constraint firstAttribute="bottom" secondItem="dcF-Ik-Wn0" secondAttribute="bottom" constant="190" id="lnx-id-FEh"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dIN-bW-g9m" firstAttribute="top" secondItem="xBk-pn-8kf" secondAttribute="top" constant="20" id="4F2-bX-54J"/>
                             <constraint firstItem="dIN-bW-g9m" firstAttribute="leading" secondItem="xBk-pn-8kf" secondAttribute="leading" id="776-RD-hwg"/>
                             <constraint firstItem="3Mg-lS-OFE" firstAttribute="top" secondItem="dIN-bW-g9m" secondAttribute="bottom" id="CVx-qE-rpA"/>
                             <constraint firstAttribute="trailing" secondItem="dIN-bW-g9m" secondAttribute="trailing" id="JZH-DD-WFO"/>
@@ -269,6 +311,9 @@
                     </view>
                     <connections>
                         <outlet property="clockView" destination="dIN-bW-g9m" id="8dL-we-qoD"/>
+                        <outlet property="milliseconds" destination="dcF-Ik-Wn0" id="Htf-Ij-uGJ"/>
+                        <outlet property="minutes" destination="Fxk-pz-yhr" id="nrU-wq-05t"/>
+                        <outlet property="seconds" destination="wFV-vS-y78" id="Rfd-iO-4Df"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rew-n3-BgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
