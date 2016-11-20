@@ -16,8 +16,6 @@ class DigitalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     func setupDefaults() {
@@ -27,6 +25,7 @@ class DigitalViewController: UIViewController {
     }
 }
 
+// Mark: - StopwatchModelDelegate functions
 extension DigitalViewController: StopwatchModelDelegate {
     
     func timerUpdated(with timestamp: TimeInterval) {

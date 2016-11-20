@@ -30,23 +30,52 @@ class StopwatchModel {
 	fileprivate var masterTimeInterval: TimeInterval = 0
 	fileprivate var lapTimeInterval: TimeInterval = 0
     
+    fileprivate let quitNotification = Notification.Name(rawValue: "quitNotification")
+    
+    //public vars to hold the indexes of the fastest and slowest times
     var fastestIndex = 0
     var slowestIndex = 0
 	
 	init() {
+        //Get persistence, get lap data (if any), get saveState and update the app based on its saveState
         let persistence = LapsPersistence()
         laps = persistence.fetchLapData()
-        switch laps.count {
-        case 0:
+        let saveState = persistence.retreiveSaveState()
+        print(saveState.time, saveState.lapTime, saveState.runState)
+        switch saveState.runState {
+        case RunState.reset.rawValue:
             runState = .reset
-        default:
+        case RunState.started.rawValue:
+            masterTimeInterval = saveState.time
+            lapTimeInterval = saveState.lapTime
             runState = .stopped
+            startStopPressed()
+        case RunState.stopped.rawValue:
+            runState = .stopped
+        default:
+            runState = .reset
         }
         fastSlowLaps()
+        
+        //Set up notification center to be able to call the saveState function when the app quits
+        let nc = NotificationCenter.default
+        nc.addObserver(forName: quitNotification, object: nil, queue: nil, using: catchNotification)
 	}
     
+    //Function to save the state of the app when the notification gets called
+    func catchNotification(notification: Notification) {
+        guard let userInfo = notification.userInfo, let message = userInfo["message"] as? String else {
+            return
+        }
+        print(message)
+        let persistence = LapsPersistence()
+        persistence.updateSaveState(with: masterTimeInterval, lapTime: lapTimeInterval, runState: runState.rawValue)
+    }
+    
+    //Update the buttons in the viewController whenever it is finished loading
     func viewControllerDoneInit() {
         delegate |> { delegate in delegate.updateLapResetButton(forState: runState) }
+        delegate |> { delegate in delegate.updateStartStopButton(forState: runState) }
     }
 	
 	func lapResetPressed() {
@@ -89,16 +118,19 @@ class StopwatchModel {
         delegate |> { delegate in delegate.updateLapResetButton(forState: runState) }
 	}
     
+    //Saves the lap to Core Data
     fileprivate func saveLap(lapTime: TimeInterval) {
         let lapsPersistence = LapsPersistence()
         lapsPersistence.insertLapData(from: lapTime)
     }
     
+    //Updates the lapArray with any data from Core Data
     fileprivate func updataLapArray() {
         let lapsPersistence = LapsPersistence()
         laps = lapsPersistence.fetchLapData()
     }
     
+    //Deletes the data from Core Data if reset is pressed
     fileprivate func deleteLaps() {
         let lapsPersistence = LapsPersistence()
         lapsPersistence.deleteLaps()
@@ -139,6 +171,8 @@ class StopwatchModel {
         updataLapArray()
 	}
     
+    //Check to see if a new lap that was added is either the 
+    //fastest or slowest and update an index accordingly
     fileprivate func checkNewLap(_ lap: TimeInterval) {
         if lap > laps[slowestIndex] {
             slowestIndex = laps.count - 1
@@ -148,6 +182,8 @@ class StopwatchModel {
         }
     }
     
+    //When the model is initialized, go through the array of laps
+    //and set which ones are the fastest and slowest
     fileprivate func fastSlowLaps() {
         for i in 0..<laps.count {
             if laps[i] > laps[slowestIndex] {

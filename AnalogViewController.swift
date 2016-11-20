@@ -10,30 +10,29 @@ import UIKit
 
 class AnalogViewController: UIViewController {
 
-    @IBOutlet weak var milliseconds: UILabel!
-    @IBOutlet weak var seconds: UILabel!
-    @IBOutlet weak var minutes: UILabel!
     let analogView = AnalogView()
     
+    @IBOutlet weak var digitalTime: UILabel!
     @IBOutlet weak var clockView: ClockView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         clockView.addSubview(analogView)
-        
+      
+        //Send analog view to back so the digital timer shows up
+        clockView.sendSubview(toBack: analogView)
 
     }
 
-
 }
 
+//Mark: - StopwatchModelDelegate protocol functions
 extension AnalogViewController: StopwatchModelDelegate {
     func timerUpdated(with timestamp: TimeInterval) {
         analogView.rotateMainHand(with: timestamp)
-//        let value = formatTimeIntervalToString(timestamp)
-//        minutes.text = value.minutes
-//        seconds.text = value.seconds
-//        milliseconds.text = value.milliseconds
+        let value = formatTimeIntervalToString(timestamp)
+
+        digitalTime?.text = "\(value.minutes):\(value.seconds).\(value.milliseconds)"
     }
     
     func lapUpdated(with timestamp: TimeInterval) {
@@ -42,5 +41,7 @@ extension AnalogViewController: StopwatchModelDelegate {
     
     func resetDefaults() {
         analogView.resetDefaults()
+
+        digitalTime?.text = "00:00.00"
     }
 }

@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func applicationWillTerminate(_ application: UIApplication) {
+        print("Quitting")
+        let nc = NotificationCenter.default
+        nc.post(name: Notification.Name(rawValue: "quitNotification"), object: nil, userInfo: ["message": "Quitting!"])
 	}
 
 }

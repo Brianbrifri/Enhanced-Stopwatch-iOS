@@ -11,7 +11,6 @@ import UIKit
 class ClockView: UIView {
     
     override func layoutSubviews() {
-        backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
         super.layoutSubviews()
     }
     
@@ -20,6 +19,7 @@ class ClockView: UIView {
         setupView(with: view)
     }
     
+    //Set up constraints for subviews
     private func setupView(with view: UIView) {
         subviews.forEach { (subView) in
             subView.translatesAutoresizingMaskIntoConstraints = false

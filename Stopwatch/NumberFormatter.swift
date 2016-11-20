@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Put the number formatter here because multiple files need this function
 func formatTimeIntervalToString(_ time: TimeInterval) -> (minutes: String, seconds: String, milliseconds: String) {
     let minutes = (Int(time) / 60) % 60
     let seconds = Int(time) % 60

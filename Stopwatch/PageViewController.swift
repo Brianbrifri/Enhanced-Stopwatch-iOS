@@ -13,6 +13,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     var timerPageControllers = [UIViewController]()
     var model: StopwatchModel?
     
+    //Add self as delegate and datasource
+    //Set the initialViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -20,10 +22,12 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         setViewControllers([timerPageControllers.first!], direction: .forward, animated: false, completion: nil)
     }
     
+    //Adds a viewController as a child of pageview
     func addChildViewControllers(_ childController: UIViewController) {
         timerPageControllers.append(childController)
     }
 
+    //Gets the previous viewController to scroll to. Returns nil otherwise to disallow infinite scrolling
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         let selectedIndex = timerPageControllers.index(of: viewController)
         if selectedIndex == timerPageControllers.count - 1 {
@@ -33,6 +37,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         }
     }
     
+    //Gets the next viewController to scroll to. Returns nil otherwise to disallow infinite scrolling
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let selectedIndex = timerPageControllers.index(of: viewController)
         if selectedIndex == 0 {
@@ -42,10 +47,12 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         }
     }
 
+    //Returns the number of child controllers to activate the pageController dots
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return timerPageControllers.count
     }
     
+    //Sets the inital index of the pageControl dots 
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return 0
     }

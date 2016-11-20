@@ -23,14 +23,16 @@ class AnalogView: UIView {
         analogLayer?.setNeedsDisplay()
     }
     
+    //Mark: - Create transforms to send to hands in AnalogLayer
     func rotateMainHand(with timestamp: TimeInterval) {
-        analogLayer?.rotateMainTimer(with: CGAffineTransform(rotationAngle: CGFloat(Double(Int(timestamp)) * M_PI / 30)))
+        analogLayer?.rotateMainTimer(with: CGAffineTransform(rotationAngle: CGFloat(timestamp * M_PI / 30)))
     }
     
     func rotateLapHand(with timestamp: TimeInterval) {
-        analogLayer?.rotateLapTimer(with: CGAffineTransform(rotationAngle: CGFloat(Double(Int(timestamp)) * M_PI / 30)))
+        analogLayer?.rotateLapTimer(with: CGAffineTransform(rotationAngle: CGFloat(timestamp * M_PI / 30)))
     }
     
+    //Reset to hands at 0
     func resetDefaults() {
         analogLayer?.rotateMainTimer(with: CGAffineTransform(rotationAngle: CGFloat(60 * M_PI) / 30))
         analogLayer?.rotateLapTimer(with: CGAffineTransform(rotationAngle: CGFloat(60 * M_PI) / 30))
